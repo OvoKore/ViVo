@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:ViVo.Controls"
+             x:Class="ViVo.Views.CadastrarTutorView"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="PlaceholderColor" Value="#bababa"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="#456fc2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="20,0,20,0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Entry Text="{Binding Nome}" Grid.Row="0" Placeholder="Nome"/>
+                <Entry Text="{Binding Cpf}" Grid.Row="1" Placeholder="CPF"/>
+                <Entry Text="{Binding Endereco}" Grid.Row="2" Placeholder="Endereço"/>
+                <Entry Text="{Binding Cidade}" Grid.Row="3" Placeholder="Cidade"/>
+                <Entry Text="{Binding Estado}" Grid.Row="4" Placeholder="Estado"/>
+                <control:CustomDatePicker Grid.Row="5" TextColor="#bababa"/>
+                <Entry Text="{Binding Password}" Grid.Row="6" Placeholder="Senha" IsPassword="True"/>
+                <Entry Text="{Binding ConfirmPassword}" Grid.Row="7" Placeholder="Confirmar senha" IsPassword="True"/>
+                <Button Text="CADASTRAR!" BackgroundColor="Green" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="8" Command="{Binding CadastrarCommand}" />
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
