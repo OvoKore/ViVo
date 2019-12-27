@@ -19,7 +19,7 @@ namespace ViVo
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("/LoginView");
+            await NavigationService.NavigateAsync("/NavigationPage/LoginView");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

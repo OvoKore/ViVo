@@ -1,13 +1,17 @@
-﻿using Prism.Mvvm;
+﻿using Prism;
+using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
+using System;
 
 namespace ViVo.ViewModels
 {
-    public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
+    public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible, IActiveAware
     {
         protected INavigationService NavigationService { get; private set; }
         protected IPageDialogService PageDialogService { get; set; }
+        protected bool HasInitialized { get; set; }
+        public event EventHandler IsActiveChanged;
 
         private string _title;
         public string Title
@@ -40,6 +44,13 @@ namespace ViVo.ViewModels
             }
         }
 
+        private bool _isActive;
+        public bool IsActive
+        {
+            get => _isActive;
+            set => SetProperty(ref _isActive, value, RaiseIsActiveChanged);
+        }
+
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
@@ -67,6 +78,7 @@ namespace ViVo.ViewModels
         {
 
         }
+
         public virtual void OnNavigatingTo(INavigationParameters parameters)
         {
 
@@ -76,5 +88,10 @@ namespace ViVo.ViewModels
         {
 
         }
+        protected virtual void RaiseIsActiveChanged()
+        {
+            IsActiveChanged?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 }

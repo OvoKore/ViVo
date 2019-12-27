@@ -1,12 +1,16 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
+using Android.Gms.Common.Apis;
+using Android.Gms.Location;
 using Android.OS;
-using Prism;
-using Prism.Ioc;
+using Android.Runtime;
+using Plugin.Permissions;
+using Xamarin.Forms;
 
 namespace ViVo.Droid
 {
-    [Activity(Label = "ViVo", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ViVô", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -16,17 +20,80 @@ namespace ViVo.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);
+
+            Forms.Init(this, bundle);
+
+            DisplayLocationSettingsRequest();
+
+            Xamarin.FormsGoogleMaps.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
-    }
 
-    public class AndroidInitializer : IPlatformInitializer
-    {
-        public void RegisterTypes(IContainerRegistry containerRegistry)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            // Register any platform specific implementations
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public void DisplayLocationSettingsRequest()
+        {
+            var googleApiClient = new GoogleApiClient.Builder(this).AddApi(LocationServices.API).Build();
+            googleApiClient.Connect();
+
+            var locationRequest = LocationRequest.Create();
+            locationRequest.SetPriority(LocationRequest.PriorityHighAccuracy);
+            locationRequest.SetInterval(10000);
+            locationRequest.SetFastestInterval(10000 / 2);
+
+            var builder = new LocationSettingsRequest.Builder().AddLocationRequest(locationRequest);
+            builder.SetAlwaysShow(true);
+
+            var result = LocationServices.SettingsApi.CheckLocationSettings(googleApiClient, builder.Build());
+            result.SetResultCallback(async (LocationSettingsResult callback) =>
+            {
+                switch (callback.Status.StatusCode)
+                {
+                    case LocationSettingsStatusCodes.Success:
+                        {
+                            await Utils.PedirPermissaoLocalizacao();
+                            break;
+                        }
+                    case LocationSettingsStatusCodes.ResolutionRequired:
+                        {
+                            try
+                            {
+                                callback.Status.StartResolutionForResult(this, Utils.REQUEST_CHECK_SETTINGS);
+                                await Utils.PedirPermissaoLocalizacao();
+                            }
+                            catch (IntentSender.SendIntentException)
+                            {
+                            }
+                            break;
+                        }
+                }
+            });
+        }
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            switch (requestCode)
+            {
+                case Utils.REQUEST_CHECK_SETTINGS:
+                    {
+                        switch (resultCode)
+                        {
+                            case Result.Ok:
+                                {
+                                    break;
+                                }
+                            case Result.Canceled:
+                                {
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+            }
         }
     }
 }
-

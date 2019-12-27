@@ -1,8 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ViVo.ViewModels
@@ -24,12 +22,13 @@ namespace ViVo.ViewModels
             Title = "Cadastro";
         }
 
-        private async Task IdosoInAsync()
+        private async Task IdosoAsync()
         {
             try
             {
                 IsBusy = true;
                 await NavigationService.NavigateAsync("CadastrarIdosoView");
+
             }
             catch (Exception ex)
             {
@@ -42,10 +41,10 @@ namespace ViVo.ViewModels
         }
         private async Task IdosoCommandExecute()
         {
-            await IdosoInAsync();
+            await IdosoAsync();
         }
 
-        private async Task NetoInAsync()
+        private async Task NetoAsync()
         {
             try
             {
@@ -63,10 +62,10 @@ namespace ViVo.ViewModels
         }
         private async Task NetoCommandExecute()
         {
-            await NetoInAsync();
+            await NetoAsync();
         }
 
-        private async Task TutorInAsync()
+        private async Task TutorAsync()
         {
             try
             {
@@ -84,7 +83,7 @@ namespace ViVo.ViewModels
         }
         private async Task TutorCommandExecute()
         {
-            await TutorInAsync();
+            await TutorAsync();
         }
     }
 }

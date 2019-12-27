@@ -4,9 +4,10 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)xamarin.forms\4.3.0.908675\build\Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\4.3.0.908675\build\Xamarin.Forms.targets')" />
-    <Import Project="$(NuGetPackageRoot)refit\4.7.51\buildTransitive\netstandard1.4\refit.targets" Condition="Exists('$(NuGetPackageRoot)refit\4.7.51\buildTransitive\netstandard1.4\refit.targets')" />
-    <Import Project="$(NuGetPackageRoot)fodyhelpers\6.0.0\build\FodyHelpers.targets" Condition="Exists('$(NuGetPackageRoot)fodyhelpers\6.0.0\build\FodyHelpers.targets')" />
-    <Import Project="$(NuGetPackageRoot)fody\6.0.0\build\Fody.targets" Condition="Exists('$(NuGetPackageRoot)fody\6.0.0\build\Fody.targets')" />
+    <Import Project="$(NuGetPackageRoot)xamarin.google.ios.maps\3.5.0\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.google.ios.maps\3.5.0\build\Xamarin.Google.iOS.Maps.targets')" />
+    <Import Project="$(NuGetPackageRoot)xamarin.forms\4.3.0.947036\build\Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\4.3.0.947036\build\Xamarin.Forms.targets')" />
+    <Import Project="$(NuGetPackageRoot)refit\4.8.14\buildTransitive\netstandard1.4\refit.targets" Condition="Exists('$(NuGetPackageRoot)refit\4.8.14\buildTransitive\netstandard1.4\refit.targets')" />
+    <Import Project="$(NuGetPackageRoot)fodyhelpers\4.0.2\build\FodyHelpers.targets" Condition="Exists('$(NuGetPackageRoot)fodyhelpers\4.0.2\build\FodyHelpers.targets')" />
+    <Import Project="$(NuGetPackageRoot)fody\4.0.2\build\Fody.targets" Condition="Exists('$(NuGetPackageRoot)fody\4.0.2\build\Fody.targets')" />
   </ImportGroup>
 </Project>

@@ -4,6 +4,6 @@
              x:Class="ViVo.Views.MainNetoView"
              BarBackgroundColor="#BABABA"
              BarTextColor="White"
-             NavigationPage.HasNavigationBar="false">
+             NavigationPage.HasNavigationBar="False">
 
 </TabbedPage>

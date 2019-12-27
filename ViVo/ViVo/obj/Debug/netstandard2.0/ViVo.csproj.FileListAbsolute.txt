@@ -1,5 +1,6 @@
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\bin\Debug\netstandard2.0\ViVo.deps.json
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\bin\Debug\netstandard2.0\ViVo.dll
+C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\bin\Debug\netstandard2.0\ViVo.pdb
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\Views\CadastrarIdosoView.xaml.g.cs
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\Views\CadastrarNetoView.xaml.g.cs
@@ -15,8 +16,11 @@ C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\Views\Ma
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\Views\MainNetoView.xaml.g.cs
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\Views\MainTutorView.xaml.g.cs
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\Views\MapView.xaml.g.cs
+C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\RefitStubs.g.cs
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\ViVo.AssemblyInfoInputs.cache
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\ViVo.AssemblyInfo.cs
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\ViVo.csproj.Fody.CopyLocal.cache
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\ViVo.dll
+C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\ViVo.pdb
+C:\Users\I9\Documents\Workspace\ViVo\ViVo\ViVo\obj\Debug\netstandard2.0\ViVo.csprojAssemblyReference.cache

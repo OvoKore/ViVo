@@ -14,13 +14,25 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
-      "Fody/6.0.0": {
+      "FluentValidation/8.5.1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
+      "Fody/4.0.2": {
         "type": "package",
         "build": {
           "build/Fody.targets": {}
         }
       },
-      "FodyHelpers/6.0.0": {
+      "FodyHelpers/4.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -31,6 +43,30 @@
         "build": {
           "build/FodyHelpers.props": {},
           "build/FodyHelpers.targets": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "NETStandard.Library/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/_._": {}
         }
       },
       "Newtonsoft.Json/12.0.2": {
@@ -78,6 +114,15 @@
           "lib/netstandard2.0/Nito.Disposables.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1367": {
         "type": "package",
         "compile": {
@@ -113,13 +158,13 @@
           "lib/netstandard2.0/Prism.Forms.dll": {}
         }
       },
-      "Realm/4.2.0": {
+      "Realm/4.1.0": {
         "type": "package",
         "dependencies": {
-          "Fody": "6.0.0",
+          "Fody": "4.0.2",
           "Newtonsoft.Json": "12.0.1",
           "Nito.AsyncEx.Context": "5.0.0",
-          "Realm.Fody": "4.2.0",
+          "Realm.Fody": "4.1.0",
           "Remotion.Linq": "2.2.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.2"
@@ -152,17 +197,17 @@
           }
         }
       },
-      "Realm.Fody/4.2.0": {
+      "Realm.Fody/4.1.0": {
         "type": "package",
         "dependencies": {
-          "FodyHelpers": "6.0.0",
+          "FodyHelpers": "4.0.2",
           "System.Management": "4.5.0"
         },
         "build": {
           "build/Realm.Fody.props": {}
         }
       },
-      "Refit/4.7.51": {
+      "Refit/4.8.14": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.2"
@@ -204,6 +249,15 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
+      "System.ComponentModel.Annotations/4.4.1": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Dynamic.Runtime/4.3.0": {
         "type": "package",
         "compile": {
@@ -243,7 +297,25 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "Xamarin.Forms/4.3.0.908675": {
+      "Xam.Plugin.Geolocator/4.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Plugin.Permissions": "3.0.0.12"
+        },
+        "compile": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        }
+      },
+      "Xamarin.Build.Download/0.4.11": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Forms/4.3.0.947036": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -366,30 +438,66 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Forms.Maps/4.3.0.908675": {
+      "Xamarin.Forms.BehaviorValidationPack/1.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Forms": "4.3.0.908675"
+          "Xamarin.Forms": "4.0.0.709238"
         },
         "compile": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
+        }
+      },
+      "Xamarin.Forms.GoogleMaps/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Google.iOS.Maps": "3.5.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        }
+      },
+      "Xamarin.Google.iOS.Maps/3.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11"
+        },
+        "frameworkAssemblies": [
+          "Xamarin.iOS"
+        ],
+        "compile": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "build": {
+          "build/Xamarin.Google.iOS.Maps.targets": {}
         }
       },
       "ViVo/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "FluentValidation": "8.5.1",
+          "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.2",
+          "Plugin.Permissions": "3.0.0.12",
+          "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
-          "Realm": "4.2.0",
-          "Xamarin.Forms": "4.3.0.908675",
-          "Xamarin.Forms.Maps": "4.3.0.908675",
-          "refit": "4.7.51"
+          "Realm": "4.1.0",
+          "Xam.Plugin.Geolocator": "4.5.0.6",
+          "Xamarin.Forms": "4.3.0.947036",
+          "Xamarin.Forms.BehaviorValidationPack": "1.1.0",
+          "Xamarin.Forms.GoogleMaps": "3.3.0",
+          "refit": "4.8.14"
         },
         "compile": {
           "bin/placeholder/ViVo.dll": {}
@@ -412,13 +520,25 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
-      "Fody/6.0.0": {
+      "FluentValidation/8.5.1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
+      "Fody/4.0.2": {
         "type": "package",
         "build": {
           "build/Fody.targets": {}
         }
       },
-      "FodyHelpers/6.0.0": {
+      "FodyHelpers/4.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -429,6 +549,30 @@
         "build": {
           "build/FodyHelpers.props": {},
           "build/FodyHelpers.targets": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "NETStandard.Library/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/_._": {}
         }
       },
       "Newtonsoft.Json/12.0.2": {
@@ -476,6 +620,15 @@
           "lib/netstandard2.0/Nito.Disposables.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1367": {
         "type": "package",
         "compile": {
@@ -511,13 +664,13 @@
           "lib/netstandard2.0/Prism.Forms.dll": {}
         }
       },
-      "Realm/4.2.0": {
+      "Realm/4.1.0": {
         "type": "package",
         "dependencies": {
-          "Fody": "6.0.0",
+          "Fody": "4.0.2",
           "Newtonsoft.Json": "12.0.1",
           "Nito.AsyncEx.Context": "5.0.0",
-          "Realm.Fody": "4.2.0",
+          "Realm.Fody": "4.1.0",
           "Remotion.Linq": "2.2.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.2"
@@ -532,17 +685,17 @@
           "build/Realm.props": {}
         }
       },
-      "Realm.Fody/4.2.0": {
+      "Realm.Fody/4.1.0": {
         "type": "package",
         "dependencies": {
-          "FodyHelpers": "6.0.0",
+          "FodyHelpers": "4.0.2",
           "System.Management": "4.5.0"
         },
         "build": {
           "build/Realm.Fody.props": {}
         }
       },
-      "Refit/4.7.51": {
+      "Refit/4.8.14": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.2"
@@ -584,6 +737,15 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
+      "System.ComponentModel.Annotations/4.4.1": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Dynamic.Runtime/4.3.0": {
         "type": "package",
         "compile": {
@@ -623,7 +785,25 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "Xamarin.Forms/4.3.0.908675": {
+      "Xam.Plugin.Geolocator/4.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Plugin.Permissions": "3.0.0.12"
+        },
+        "compile": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        }
+      },
+      "Xamarin.Build.Download/0.4.11": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Forms/4.3.0.947036": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -746,30 +926,66 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Forms.Maps/4.3.0.908675": {
+      "Xamarin.Forms.BehaviorValidationPack/1.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Forms": "4.3.0.908675"
+          "Xamarin.Forms": "4.0.0.709238"
         },
         "compile": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
+        }
+      },
+      "Xamarin.Forms.GoogleMaps/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Google.iOS.Maps": "3.5.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        }
+      },
+      "Xamarin.Google.iOS.Maps/3.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11"
+        },
+        "frameworkAssemblies": [
+          "Xamarin.iOS"
+        ],
+        "compile": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "build": {
+          "build/Xamarin.Google.iOS.Maps.targets": {}
         }
       },
       "ViVo/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "FluentValidation": "8.5.1",
+          "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.2",
+          "Plugin.Permissions": "3.0.0.12",
+          "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
-          "Realm": "4.2.0",
-          "Xamarin.Forms": "4.3.0.908675",
-          "Xamarin.Forms.Maps": "4.3.0.908675",
-          "refit": "4.7.51"
+          "Realm": "4.1.0",
+          "Xam.Plugin.Geolocator": "4.5.0.6",
+          "Xamarin.Forms": "4.3.0.947036",
+          "Xamarin.Forms.BehaviorValidationPack": "1.1.0",
+          "Xamarin.Forms.GoogleMaps": "3.3.0",
+          "refit": "4.8.14"
         },
         "compile": {
           "bin/placeholder/ViVo.dll": {}
@@ -792,13 +1008,25 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
-      "Fody/6.0.0": {
+      "FluentValidation/8.5.1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
+      "Fody/4.0.2": {
         "type": "package",
         "build": {
           "build/Fody.targets": {}
         }
       },
-      "FodyHelpers/6.0.0": {
+      "FodyHelpers/4.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -809,6 +1037,30 @@
         "build": {
           "build/FodyHelpers.props": {},
           "build/FodyHelpers.targets": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "NETStandard.Library/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/_._": {}
         }
       },
       "Newtonsoft.Json/12.0.2": {
@@ -856,6 +1108,15 @@
           "lib/netstandard2.0/Nito.Disposables.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1367": {
         "type": "package",
         "compile": {
@@ -891,13 +1152,13 @@
           "lib/netstandard2.0/Prism.Forms.dll": {}
         }
       },
-      "Realm/4.2.0": {
+      "Realm/4.1.0": {
         "type": "package",
         "dependencies": {
-          "Fody": "6.0.0",
+          "Fody": "4.0.2",
           "Newtonsoft.Json": "12.0.1",
           "Nito.AsyncEx.Context": "5.0.0",
-          "Realm.Fody": "4.2.0",
+          "Realm.Fody": "4.1.0",
           "Remotion.Linq": "2.2.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.2"
@@ -915,17 +1176,17 @@
           "build/Realm.props": {}
         }
       },
-      "Realm.Fody/4.2.0": {
+      "Realm.Fody/4.1.0": {
         "type": "package",
         "dependencies": {
-          "FodyHelpers": "6.0.0",
+          "FodyHelpers": "4.0.2",
           "System.Management": "4.5.0"
         },
         "build": {
           "build/Realm.Fody.props": {}
         }
       },
-      "Refit/4.7.51": {
+      "Refit/4.8.14": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.2"
@@ -967,6 +1228,15 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
+      "System.ComponentModel.Annotations/4.4.1": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Dynamic.Runtime/4.3.0": {
         "type": "package",
         "compile": {
@@ -1006,7 +1276,25 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "Xamarin.Forms/4.3.0.908675": {
+      "Xam.Plugin.Geolocator/4.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Plugin.Permissions": "3.0.0.12"
+        },
+        "compile": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        }
+      },
+      "Xamarin.Build.Download/0.4.11": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Forms/4.3.0.947036": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1129,30 +1417,66 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Forms.Maps/4.3.0.908675": {
+      "Xamarin.Forms.BehaviorValidationPack/1.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Forms": "4.3.0.908675"
+          "Xamarin.Forms": "4.0.0.709238"
         },
         "compile": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
+        }
+      },
+      "Xamarin.Forms.GoogleMaps/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Google.iOS.Maps": "3.5.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        }
+      },
+      "Xamarin.Google.iOS.Maps/3.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11"
+        },
+        "frameworkAssemblies": [
+          "Xamarin.iOS"
+        ],
+        "compile": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "build": {
+          "build/Xamarin.Google.iOS.Maps.targets": {}
         }
       },
       "ViVo/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "FluentValidation": "8.5.1",
+          "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.2",
+          "Plugin.Permissions": "3.0.0.12",
+          "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
-          "Realm": "4.2.0",
-          "Xamarin.Forms": "4.3.0.908675",
-          "Xamarin.Forms.Maps": "4.3.0.908675",
-          "refit": "4.7.51"
+          "Realm": "4.1.0",
+          "Xam.Plugin.Geolocator": "4.5.0.6",
+          "Xamarin.Forms": "4.3.0.947036",
+          "Xamarin.Forms.BehaviorValidationPack": "1.1.0",
+          "Xamarin.Forms.GoogleMaps": "3.3.0",
+          "refit": "4.8.14"
         },
         "compile": {
           "bin/placeholder/ViVo.dll": {}
@@ -1175,13 +1499,25 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
-      "Fody/6.0.0": {
+      "FluentValidation/8.5.1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
+      "Fody/4.0.2": {
         "type": "package",
         "build": {
           "build/Fody.targets": {}
         }
       },
-      "FodyHelpers/6.0.0": {
+      "FodyHelpers/4.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -1192,6 +1528,30 @@
         "build": {
           "build/FodyHelpers.props": {},
           "build/FodyHelpers.targets": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "NETStandard.Library/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/_._": {}
         }
       },
       "Newtonsoft.Json/12.0.2": {
@@ -1239,6 +1599,15 @@
           "lib/netstandard2.0/Nito.Disposables.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Prism.Core/7.2.0.1367": {
         "type": "package",
         "compile": {
@@ -1274,13 +1643,13 @@
           "lib/netstandard2.0/Prism.Forms.dll": {}
         }
       },
-      "Realm/4.2.0": {
+      "Realm/4.1.0": {
         "type": "package",
         "dependencies": {
-          "Fody": "6.0.0",
+          "Fody": "4.0.2",
           "Newtonsoft.Json": "12.0.1",
           "Nito.AsyncEx.Context": "5.0.0",
-          "Realm.Fody": "4.2.0",
+          "Realm.Fody": "4.1.0",
           "Remotion.Linq": "2.2.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.2"
@@ -1298,17 +1667,17 @@
           "build/Realm.props": {}
         }
       },
-      "Realm.Fody/4.2.0": {
+      "Realm.Fody/4.1.0": {
         "type": "package",
         "dependencies": {
-          "FodyHelpers": "6.0.0",
+          "FodyHelpers": "4.0.2",
           "System.Management": "4.5.0"
         },
         "build": {
           "build/Realm.Fody.props": {}
         }
       },
-      "Refit/4.7.51": {
+      "Refit/4.8.14": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.2"
@@ -1350,6 +1719,15 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
+      "System.ComponentModel.Annotations/4.4.1": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Dynamic.Runtime/4.3.0": {
         "type": "package",
         "compile": {
@@ -1389,7 +1767,25 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "Xamarin.Forms/4.3.0.908675": {
+      "Xam.Plugin.Geolocator/4.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Plugin.Permissions": "3.0.0.12"
+        },
+        "compile": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Geolocator.dll": {}
+        }
+      },
+      "Xamarin.Build.Download/0.4.11": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Forms/4.3.0.947036": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1512,30 +1908,66 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Forms.Maps/4.3.0.908675": {
+      "Xamarin.Forms.BehaviorValidationPack/1.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Forms": "4.3.0.908675"
+          "Xamarin.Forms": "4.0.0.709238"
         },
         "compile": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll": {},
-          "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll": {}
+        }
+      },
+      "Xamarin.Forms.GoogleMaps/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Google.iOS.Maps": "3.5.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll": {}
+        }
+      },
+      "Xamarin.Google.iOS.Maps/3.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11"
+        },
+        "frameworkAssemblies": [
+          "Xamarin.iOS"
+        ],
+        "compile": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Google.Maps.dll": {}
+        },
+        "build": {
+          "build/Xamarin.Google.iOS.Maps.targets": {}
         }
       },
       "ViVo/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "FluentValidation": "8.5.1",
+          "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.2",
+          "Plugin.Permissions": "3.0.0.12",
+          "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
-          "Realm": "4.2.0",
-          "Xamarin.Forms": "4.3.0.908675",
-          "Xamarin.Forms.Maps": "4.3.0.908675",
-          "refit": "4.7.51"
+          "Realm": "4.1.0",
+          "Xam.Plugin.Geolocator": "4.5.0.6",
+          "Xamarin.Forms": "4.3.0.947036",
+          "Xamarin.Forms.BehaviorValidationPack": "1.1.0",
+          "Xamarin.Forms.GoogleMaps": "3.3.0",
+          "refit": "4.8.14"
         },
         "compile": {
           "bin/placeholder/ViVo.dll": {}
@@ -1576,20 +2008,41 @@
         "lib/portable-net45+win8+wp8+wpa81/DryIoc.xml"
       ]
     },
-    "Fody/6.0.0": {
-      "sha512": "rH9Q7GapghyLYESfeCUOqh0S70eLc3FAikIgEEyGeng3JJf1M7mt2BUxjz93o3ipDXLrKn1s69AIEolmnVn8xg==",
+    "FluentValidation/8.5.1": {
+      "sha512": "GoygZcMkCcve3UHZM3ITSzgrPdfjPSl5mRSQKL6BlV8aI0yi+shIAju7k6QirPESNGsKzn+r4ne0JmqsAGG/PA==",
       "type": "package",
-      "path": "fody/6.0.0",
+      "path": "fluentvalidation/8.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentvalidation.8.5.1.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net45/FluentValidation.dll",
+        "lib/net45/FluentValidation.xml",
+        "lib/netstandard1.1/FluentValidation.dll",
+        "lib/netstandard1.1/FluentValidation.xml",
+        "lib/netstandard1.6/FluentValidation.dll",
+        "lib/netstandard1.6/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml"
+      ]
+    },
+    "Fody/4.0.2": {
+      "sha512": "vY77397mlY3qP1+i3G/MsWMmwS2j+WOzEj9JrZvINZLkjBF+KvIFypv3Ro8eBH87Awx4tFdEYWBOL1HYO2gh4g==",
+      "type": "package",
+      "path": "fody/4.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/Fody.targets",
-        "fody.6.0.0.nupkg.sha512",
+        "fody.4.0.2.nupkg.sha512",
         "fody.nuspec",
         "netclassictask/Fody.dll",
         "netclassictask/FodyCommon.dll",
         "netclassictask/FodyHelpers.dll",
         "netclassictask/FodyIsolated.dll",
+        "netclassictask/Mono.Cecil.Mdb.dll",
+        "netclassictask/Mono.Cecil.Mdb.pdb",
         "netclassictask/Mono.Cecil.Pdb.dll",
         "netclassictask/Mono.Cecil.Pdb.pdb",
         "netclassictask/Mono.Cecil.Rocks.dll",
@@ -1600,6 +2053,8 @@
         "netstandardtask/FodyCommon.dll",
         "netstandardtask/FodyHelpers.dll",
         "netstandardtask/FodyIsolated.dll",
+        "netstandardtask/Mono.Cecil.Mdb.dll",
+        "netstandardtask/Mono.Cecil.Mdb.pdb",
         "netstandardtask/Mono.Cecil.Pdb.dll",
         "netstandardtask/Mono.Cecil.Pdb.pdb",
         "netstandardtask/Mono.Cecil.Rocks.dll",
@@ -1608,25 +2063,181 @@
         "netstandardtask/Mono.Cecil.pdb"
       ]
     },
-    "FodyHelpers/6.0.0": {
-      "sha512": "akwJYJsTSRdciMxMvYapxt63oIAflC4nJ1z7h1MNs6Br2MsvcOI/Kh8GJ/R618WUjlL+VXUxnr8CgM13MvphUQ==",
+    "FodyHelpers/4.0.2": {
+      "sha512": "M8bT+J+ZVlBtg2yD9gs1t+w7fzJ1wt6ANXS75SqfjVO5IIsjC4nWIdkKpTEtZyrVggjIxn8i1fnBNpjE7CgKZQ==",
       "type": "package",
-      "path": "fodyhelpers/6.0.0",
+      "path": "fodyhelpers/4.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/FodyHelpers.props",
         "build/FodyHelpers.targets",
-        "fodyhelpers.6.0.0.nupkg.sha512",
+        "fodyhelpers.4.0.2.nupkg.sha512",
         "fodyhelpers.nuspec",
+        "lib/net46/FodyHelpers.dll",
+        "lib/net46/FodyHelpers.xml",
+        "lib/net46/Mono.Cecil.Mdb.dll",
+        "lib/net46/Mono.Cecil.Mdb.pdb",
+        "lib/net46/Mono.Cecil.Pdb.dll",
+        "lib/net46/Mono.Cecil.Pdb.pdb",
+        "lib/net46/Mono.Cecil.Rocks.dll",
+        "lib/net46/Mono.Cecil.Rocks.pdb",
+        "lib/net46/Mono.Cecil.dll",
+        "lib/net46/Mono.Cecil.pdb",
         "lib/netstandard2.0/FodyHelpers.dll",
         "lib/netstandard2.0/FodyHelpers.xml",
+        "lib/netstandard2.0/Mono.Cecil.Mdb.dll",
+        "lib/netstandard2.0/Mono.Cecil.Mdb.pdb",
         "lib/netstandard2.0/Mono.Cecil.Pdb.dll",
         "lib/netstandard2.0/Mono.Cecil.Pdb.pdb",
         "lib/netstandard2.0/Mono.Cecil.Rocks.dll",
         "lib/netstandard2.0/Mono.Cecil.Rocks.pdb",
         "lib/netstandard2.0/Mono.Cecil.dll",
         "lib/netstandard2.0/Mono.Cecil.pdb"
+      ]
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
+    "NETStandard.Library/2.0.3": {
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "type": "package",
+      "path": "netstandard.library/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/netstandard2.0/NETStandard.Library.targets",
+        "build/netstandard2.0/ref/Microsoft.Win32.Primitives.dll",
+        "build/netstandard2.0/ref/System.AppContext.dll",
+        "build/netstandard2.0/ref/System.Collections.Concurrent.dll",
+        "build/netstandard2.0/ref/System.Collections.NonGeneric.dll",
+        "build/netstandard2.0/ref/System.Collections.Specialized.dll",
+        "build/netstandard2.0/ref/System.Collections.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.Composition.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.EventBasedAsync.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.Primitives.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.TypeConverter.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.dll",
+        "build/netstandard2.0/ref/System.Console.dll",
+        "build/netstandard2.0/ref/System.Core.dll",
+        "build/netstandard2.0/ref/System.Data.Common.dll",
+        "build/netstandard2.0/ref/System.Data.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Contracts.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Debug.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.FileVersionInfo.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Process.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.StackTrace.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.TextWriterTraceListener.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Tools.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.TraceSource.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Tracing.dll",
+        "build/netstandard2.0/ref/System.Drawing.Primitives.dll",
+        "build/netstandard2.0/ref/System.Drawing.dll",
+        "build/netstandard2.0/ref/System.Dynamic.Runtime.dll",
+        "build/netstandard2.0/ref/System.Globalization.Calendars.dll",
+        "build/netstandard2.0/ref/System.Globalization.Extensions.dll",
+        "build/netstandard2.0/ref/System.Globalization.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.FileSystem.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.ZipFile.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.DriveInfo.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.Primitives.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.Watcher.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.dll",
+        "build/netstandard2.0/ref/System.IO.IsolatedStorage.dll",
+        "build/netstandard2.0/ref/System.IO.MemoryMappedFiles.dll",
+        "build/netstandard2.0/ref/System.IO.Pipes.dll",
+        "build/netstandard2.0/ref/System.IO.UnmanagedMemoryStream.dll",
+        "build/netstandard2.0/ref/System.IO.dll",
+        "build/netstandard2.0/ref/System.Linq.Expressions.dll",
+        "build/netstandard2.0/ref/System.Linq.Parallel.dll",
+        "build/netstandard2.0/ref/System.Linq.Queryable.dll",
+        "build/netstandard2.0/ref/System.Linq.dll",
+        "build/netstandard2.0/ref/System.Net.Http.dll",
+        "build/netstandard2.0/ref/System.Net.NameResolution.dll",
+        "build/netstandard2.0/ref/System.Net.NetworkInformation.dll",
+        "build/netstandard2.0/ref/System.Net.Ping.dll",
+        "build/netstandard2.0/ref/System.Net.Primitives.dll",
+        "build/netstandard2.0/ref/System.Net.Requests.dll",
+        "build/netstandard2.0/ref/System.Net.Security.dll",
+        "build/netstandard2.0/ref/System.Net.Sockets.dll",
+        "build/netstandard2.0/ref/System.Net.WebHeaderCollection.dll",
+        "build/netstandard2.0/ref/System.Net.WebSockets.Client.dll",
+        "build/netstandard2.0/ref/System.Net.WebSockets.dll",
+        "build/netstandard2.0/ref/System.Net.dll",
+        "build/netstandard2.0/ref/System.Numerics.dll",
+        "build/netstandard2.0/ref/System.ObjectModel.dll",
+        "build/netstandard2.0/ref/System.Reflection.Extensions.dll",
+        "build/netstandard2.0/ref/System.Reflection.Primitives.dll",
+        "build/netstandard2.0/ref/System.Reflection.dll",
+        "build/netstandard2.0/ref/System.Resources.Reader.dll",
+        "build/netstandard2.0/ref/System.Resources.ResourceManager.dll",
+        "build/netstandard2.0/ref/System.Resources.Writer.dll",
+        "build/netstandard2.0/ref/System.Runtime.CompilerServices.VisualC.dll",
+        "build/netstandard2.0/ref/System.Runtime.Extensions.dll",
+        "build/netstandard2.0/ref/System.Runtime.Handles.dll",
+        "build/netstandard2.0/ref/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "build/netstandard2.0/ref/System.Runtime.InteropServices.dll",
+        "build/netstandard2.0/ref/System.Runtime.Numerics.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Formatters.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Json.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Primitives.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Xml.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.dll",
+        "build/netstandard2.0/ref/System.Runtime.dll",
+        "build/netstandard2.0/ref/System.Security.Claims.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Algorithms.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Csp.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Encoding.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Primitives.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.X509Certificates.dll",
+        "build/netstandard2.0/ref/System.Security.Principal.dll",
+        "build/netstandard2.0/ref/System.Security.SecureString.dll",
+        "build/netstandard2.0/ref/System.ServiceModel.Web.dll",
+        "build/netstandard2.0/ref/System.Text.Encoding.Extensions.dll",
+        "build/netstandard2.0/ref/System.Text.Encoding.dll",
+        "build/netstandard2.0/ref/System.Text.RegularExpressions.dll",
+        "build/netstandard2.0/ref/System.Threading.Overlapped.dll",
+        "build/netstandard2.0/ref/System.Threading.Tasks.Parallel.dll",
+        "build/netstandard2.0/ref/System.Threading.Tasks.dll",
+        "build/netstandard2.0/ref/System.Threading.Thread.dll",
+        "build/netstandard2.0/ref/System.Threading.ThreadPool.dll",
+        "build/netstandard2.0/ref/System.Threading.Timer.dll",
+        "build/netstandard2.0/ref/System.Threading.dll",
+        "build/netstandard2.0/ref/System.Transactions.dll",
+        "build/netstandard2.0/ref/System.ValueTuple.dll",
+        "build/netstandard2.0/ref/System.Web.dll",
+        "build/netstandard2.0/ref/System.Windows.dll",
+        "build/netstandard2.0/ref/System.Xml.Linq.dll",
+        "build/netstandard2.0/ref/System.Xml.ReaderWriter.dll",
+        "build/netstandard2.0/ref/System.Xml.Serialization.dll",
+        "build/netstandard2.0/ref/System.Xml.XDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XPath.XDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XPath.dll",
+        "build/netstandard2.0/ref/System.Xml.XmlDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XmlSerializer.dll",
+        "build/netstandard2.0/ref/System.Xml.dll",
+        "build/netstandard2.0/ref/System.dll",
+        "build/netstandard2.0/ref/mscorlib.dll",
+        "build/netstandard2.0/ref/netstandard.dll",
+        "build/netstandard2.0/ref/netstandard.xml",
+        "lib/netstandard1.0/_._",
+        "netstandard.library.2.0.3.nupkg.sha512",
+        "netstandard.library.nuspec"
       ]
     },
     "Newtonsoft.Json/12.0.2": {
@@ -1706,6 +2317,29 @@
         "nito.disposables.nuspec"
       ]
     },
+    "Plugin.Permissions/3.0.0.12": {
+      "sha512": "VrYqI/ufk3bH6gTP1JJlLByjhS0CHu3riKmdozhX9/qXA9hlvLolmcqKJdyAqpzmrVC74m3ZtirUBIrBxvT1Lw==",
+      "type": "package",
+      "path": "plugin.permissions/3.0.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid71/Plugin.Permissions.dll",
+        "lib/monoandroid71/Plugin.Permissions.xml",
+        "lib/netstandard1.0/Plugin.Permissions.dll",
+        "lib/netstandard1.0/Plugin.Permissions.xml",
+        "lib/netstandard2.0/Plugin.Permissions.dll",
+        "lib/netstandard2.0/Plugin.Permissions.xml",
+        "lib/uap10.0.10240/Plugin.Permissions.dll",
+        "lib/uap10.0.10240/Plugin.Permissions.pri",
+        "lib/uap10.0.10240/Plugin.Permissions.xml",
+        "lib/xamarinios10/Plugin.Permissions.dll",
+        "lib/xamarinios10/Plugin.Permissions.xml",
+        "plugin.permissions.3.0.0.12.nupkg.sha512",
+        "plugin.permissions.nuspec",
+        "readme.txt"
+      ]
+    },
     "Prism.Core/7.2.0.1367": {
       "sha512": "vrz2M/Hr9ItcAUvnT+n76ak6qPQMgJfyTYFSKqphveb9ibohm70vzc0cWu1jkeBY5XPS9RbUluXMa9WQGM0kPw==",
       "type": "package",
@@ -1761,10 +2395,10 @@
         "prism.forms.nuspec"
       ]
     },
-    "Realm/4.2.0": {
-      "sha512": "cFfHcBDwrk+Oqvz+cQbkUNq564X5YrTTTwU/PxBG0+BdGu3n8cZyIgzwDYYW4Y7rBfeJDKCogWF81SD0XAwFjQ==",
+    "Realm/4.1.0": {
+      "sha512": "w/Xp7r5TErRdOfSI8wWTCkyoXCd+Hmh1RA9VYhmm/0TRUn6hzjxK8LgpU3OzsmKkO5EzFamcm99+/r8DG85mvg==",
       "type": "package",
-      "path": "realm/4.2.0",
+      "path": "realm/4.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1779,7 +2413,7 @@
         "native/ios/Realm.dll.config",
         "native/ios/universal/realm-wrappers.framework/Info.plist",
         "native/ios/universal/realm-wrappers.framework/realm-wrappers",
-        "realm.4.2.0.nupkg.sha512",
+        "realm.4.1.0.nupkg.sha512",
         "realm.nuspec",
         "runtimes/linux-x64/native/librealm-wrappers.so",
         "runtimes/osx-x64/native/librealm-wrappers.dylib",
@@ -1790,24 +2424,28 @@
         "runtimes/win10-x86/nativeassets/uap10.0/realm-wrappers.dll"
       ]
     },
-    "Realm.Fody/4.2.0": {
-      "sha512": "7hUuBIlBieJZUQL0sVoMlqxpJ5dFJL2rtzJPJU1rAAWCVlBFrqP8woQtdhaUj7OqwUMTmHcKgABLhhpqXAdMfA==",
+    "Realm.Fody/4.1.0": {
+      "sha512": "yQTgdRSiSQ+H5euriqlqgfyL8i7BTigNTLOx1X1cvEeLOUYy7UGlleGVXG5B2Ld1TZUYkNmnaoEHrdImoV2bjA==",
       "type": "package",
-      "path": "realm.fody/4.2.0",
+      "path": "realm.fody/4.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/Realm.Fody.props",
-        "realm.fody.4.2.0.nupkg.sha512",
+        "realm.fody.4.1.0.nupkg.sha512",
         "realm.fody.nuspec",
+        "weaver/net46/Realm.Fody.dll",
+        "weaver/net46/Realm.Fody.pdb",
+        "weaver/net46/Realm.Fody.xcf",
         "weaver/netstandard2.0/Realm.Fody.dll",
+        "weaver/netstandard2.0/Realm.Fody.pdb",
         "weaver/netstandard2.0/Realm.Fody.xcf"
       ]
     },
-    "Refit/4.7.51": {
-      "sha512": "QQ6CBA18lvFPCGAy9c9lLSkDpGSCJhTgH5IpeiUpvrkPVOJ4ROSKwej26ulFEwYQSEIkjC3ESZ/KGHe3WbK28g==",
+    "Refit/4.8.14": {
+      "sha512": "gk5Kgm1El3kaiKS/renb4zTOt78NhGQZzplfMDNLGPw0EuJ6P5lhuy5n/pbHTjmjybnfOuTI1DGWFtJzJsKsaA==",
       "type": "package",
-      "path": "refit/4.7.51",
+      "path": "refit/4.8.14",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2001,7 +2639,7 @@
         "lib/netstandard1.4/Refit.xml",
         "lib/netstandard2.0/Refit.dll",
         "lib/netstandard2.0/Refit.xml",
-        "refit.4.7.51.nupkg.sha512",
+        "refit.4.8.14.nupkg.sha512",
         "refit.nuspec"
       ]
     },
@@ -2066,6 +2704,93 @@
         "ref/netcoreapp2.0/_._",
         "system.collections.immutable.1.4.0.nupkg.sha512",
         "system.collections.immutable.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.ComponentModel.Annotations/4.4.1": {
+      "sha512": "ToiYqSCioqhtspq2O/jYKtyTC/T0uwWHBTYlzCi6PRbSSHArN1IaRWeHffDamvms5sye5FDUWCfNZgubQpNRsA==",
+      "type": "package",
+      "path": "system.componentmodel.annotations/4.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net461/System.ComponentModel.Annotations.dll",
+        "lib/netcore50/System.ComponentModel.Annotations.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "lib/portable-net45+win8/_._",
+        "lib/win8/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net461/System.ComponentModel.Annotations.dll",
+        "ref/net461/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/System.ComponentModel.Annotations.dll",
+        "ref/netcore50/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/de/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/es/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/fr/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/it/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ja/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ko/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ru/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.xml",
+        "ref/portable-net45+win8/_._",
+        "ref/win8/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.annotations.4.4.1.nupkg.sha512",
+        "system.componentmodel.annotations.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -2232,10 +2957,55 @@
         "version.txt"
       ]
     },
-    "Xamarin.Forms/4.3.0.908675": {
-      "sha512": "kXrbXKJvXYF4cKjs1Jsb+pQFEnFGl0AONYSeABjgOJqN/o5Y4zC0XXQ68xiUI81PKQTuRB5F3oDom2t5ccJDZw==",
+    "Xam.Plugin.Geolocator/4.5.0.6": {
+      "sha512": "Ro7peBDxsDXPc7J7yLx0ekAcXIfVTAXj/rXiBKiTgZ4Lm7KZJIU8PXOCcI4JztzT3MQrL8Rmka48il/ix0pwoA==",
       "type": "package",
-      "path": "xamarin.forms/4.3.0.908675",
+      "path": "xam.plugin.geolocator/4.5.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid71/Plugin.Geolocator.dll",
+        "lib/monoandroid71/Plugin.Geolocator.xml",
+        "lib/netstandard1.0/Plugin.Geolocator.dll",
+        "lib/netstandard1.0/Plugin.Geolocator.xml",
+        "lib/netstandard2.0/Plugin.Geolocator.dll",
+        "lib/netstandard2.0/Plugin.Geolocator.xml",
+        "lib/uap10.0.10240/Plugin.Geolocator.dll",
+        "lib/uap10.0.10240/Plugin.Geolocator.pri",
+        "lib/uap10.0.10240/Plugin.Geolocator.xml",
+        "lib/xamarinios10/Plugin.Geolocator.dll",
+        "lib/xamarinios10/Plugin.Geolocator.xml",
+        "lib/xamarinmac20/Plugin.Geolocator.dll",
+        "lib/xamarinmac20/Plugin.Geolocator.xml",
+        "lib/xamarintvos10/Plugin.Geolocator.dll",
+        "lib/xamarintvos10/Plugin.Geolocator.xml",
+        "readme.txt",
+        "xam.plugin.geolocator.4.5.0.6.nupkg.sha512",
+        "xam.plugin.geolocator.nuspec"
+      ]
+    },
+    "Xamarin.Build.Download/0.4.11": {
+      "sha512": "svGAoBnMVQwUbIv1+j7vDypY+2R7jruefJRmVsxhuvSFXMP8dV+yZK3UGuZa3zV5ThKimk9eqHuvRcl/JVipbA==",
+      "type": "package",
+      "path": "xamarin.build.download/0.4.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/Mono.Cecil.dll",
+        "build/Newtonsoft.Json.dll",
+        "build/System.Net.Http.Formatting.dll",
+        "build/Xamarin.Build.Download.dll",
+        "build/Xamarin.Build.Download.props",
+        "build/Xamarin.Build.Download.targets",
+        "xamarin.build.download.0.4.11.nupkg.sha512",
+        "xamarin.build.download.nuspec"
+      ]
+    },
+    "Xamarin.Forms/4.3.0.947036": {
+      "sha512": "oEAwwHfaZesC+VvP07UoctI1DGIgewZlKMr/sHPl/hNMRM6ZfccPgOY19Yw017asj9z7PKXqpDDUbFFOJ2jN4A==",
+      "type": "package",
+      "path": "xamarin.forms/4.3.0.947036",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2476,41 +3246,53 @@
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.4.3.0.908675.nupkg.sha512",
+        "xamarin.forms.4.3.0.947036.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
-    "Xamarin.Forms.Maps/4.3.0.908675": {
-      "sha512": "+A67X2ijiICMRLqGADjj8ngAEUYpq+KihBVA1+5Y0kFJg++rs8QrEEw8Qz/jHwIH3a0hCr+5qiDNkEPG+5xX7Q==",
+    "Xamarin.Forms.BehaviorValidationPack/1.1.0": {
+      "sha512": "VBnDKM+qK2RBlT0i5nTPBn2C4unoTZ34DPBxCO4aaUWycZDBckMiNKZA4vTV5b/rc50p5uWuLpQwUdQriQol8w==",
       "type": "package",
-      "path": "xamarin.forms.maps/4.3.0.908675",
+      "path": "xamarin.forms.behaviorvalidationpack/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/MonoAndroid81/Xamarin.Forms.Maps.Android.dll",
-        "lib/MonoAndroid81/Xamarin.Forms.Maps.dll",
-        "lib/MonoAndroid81/Xamarin.Forms.Maps.xml",
-        "lib/MonoAndroid90/Xamarin.Forms.Maps.Android.dll",
-        "lib/MonoAndroid90/Xamarin.Forms.Maps.dll",
-        "lib/MonoAndroid90/Xamarin.Forms.Maps.xml",
-        "lib/Xamarin.Mac/Xamarin.Forms.Maps.dll",
-        "lib/Xamarin.Mac/Xamarin.Forms.Maps.macOS.dll",
-        "lib/Xamarin.Mac/Xamarin.Forms.Maps.xml",
-        "lib/Xamarin.iOS10/Xamarin.Forms.Maps.dll",
-        "lib/Xamarin.iOS10/Xamarin.Forms.Maps.iOS.dll",
-        "lib/Xamarin.iOS10/Xamarin.Forms.Maps.xml",
-        "lib/netstandard1.0/Xamarin.Forms.Maps.dll",
-        "lib/netstandard1.0/Xamarin.Forms.Maps.xml",
-        "lib/netstandard2.0/Xamarin.Forms.Maps.dll",
-        "lib/netstandard2.0/Xamarin.Forms.Maps.xml",
-        "lib/tizen40/Xamarin.Forms.Maps.Tizen.dll",
-        "lib/tizen40/Xamarin.Forms.Maps.dll",
-        "lib/tizen40/Xamarin.Forms.Maps.xml",
-        "lib/uap10.0/Xamarin.Forms.Maps.UWP.dll",
-        "lib/uap10.0/Xamarin.Forms.Maps.UWP.pri",
-        "lib/uap10.0/Xamarin.Forms.Maps.dll",
-        "xamarin.forms.maps.4.3.0.908675.nupkg.sha512",
-        "xamarin.forms.maps.nuspec"
+        "lib/netstandard2.0/Xamarin.Forms.BehaviorValidationPack.dll",
+        "xamarin.forms.behaviorvalidationpack.1.1.0.nupkg.sha512",
+        "xamarin.forms.behaviorvalidationpack.nuspec"
+      ]
+    },
+    "Xamarin.Forms.GoogleMaps/3.3.0": {
+      "sha512": "C1wutzR7wLgUQuiG1NgArab0X02DGOKWW10+uLBUJE+Cac0+8J/TlLVqdqEl82BDGl3n71zmiLnHd5AZlrFEfw==",
+      "type": "package",
+      "path": "xamarin.forms.googlemaps/3.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/MonoAndroid70/Xamarin.Forms.GoogleMaps.Android.dll",
+        "lib/MonoAndroid70/Xamarin.Forms.GoogleMaps.dll",
+        "lib/UAP10/Xamarin.Forms.GoogleMaps.UWP.dll",
+        "lib/UAP10/Xamarin.Forms.GoogleMaps.dll",
+        "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.dll",
+        "lib/Xamarin.iOS10/Xamarin.Forms.GoogleMaps.iOS.dll",
+        "lib/netstandard1.0/Xamarin.Forms.GoogleMaps.dll",
+        "lib/netstandard2.0/Xamarin.Forms.GoogleMaps.dll",
+        "xamarin.forms.googlemaps.3.3.0.nupkg.sha512",
+        "xamarin.forms.googlemaps.nuspec"
+      ]
+    },
+    "Xamarin.Google.iOS.Maps/3.5.0": {
+      "sha512": "aQnxCVYDwW4e7z+14CnQmxag05XRULfmfg4t+6IlsZN/nEmYHcyiX1DqWHhdQF/prJsKU0dFeRNyB7tL/g00Qw==",
+      "type": "package",
+      "path": "xamarin.google.ios.maps/3.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Xamarin.Google.iOS.Maps.targets",
+        "lib/xamarinios10/Google.Maps.dll",
+        "xamarin.google.ios.maps.3.5.0.nupkg.sha512",
+        "xamarin.google.ios.maps.nuspec"
       ]
     },
     "ViVo/1.0.0": {
@@ -2522,10 +3304,13 @@
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
       "Newtonsoft.Json >= 12.0.2",
+      "Plugin.Permissions >= 3.0.0.12",
       "Prism.DryIoc.Forms >= 7.2.0.1367",
-      "Realm >= 4.2.0",
+      "Realm >= 4.1.0",
       "ViVo >= 1.0.0",
-      "Xamarin.Forms >= 4.3.0.908675"
+      "Xam.Plugin.Geolocator >= 4.5.0.6",
+      "Xamarin.Forms >= 4.3.0.947036",
+      "Xamarin.Forms.GoogleMaps >= 3.3.0"
     ]
   },
   "packageFolders": {
@@ -2574,17 +3359,29 @@
             "target": "Package",
             "version": "[12.0.2, )"
           },
+          "Plugin.Permissions": {
+            "target": "Package",
+            "version": "[3.0.0.12, )"
+          },
           "Prism.DryIoc.Forms": {
             "target": "Package",
             "version": "[7.2.0.1367, )"
           },
           "Realm": {
             "target": "Package",
-            "version": "[4.2.0, )"
+            "version": "[4.1.0, )"
+          },
+          "Xam.Plugin.Geolocator": {
+            "target": "Package",
+            "version": "[4.5.0.6, )"
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[4.3.0.908675, )"
+            "version": "[4.3.0.947036, )"
+          },
+          "Xamarin.Forms.GoogleMaps": {
+            "target": "Package",
+            "version": "[3.3.0, )"
           }
         }
       }

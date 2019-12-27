@@ -1,55 +1,165 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:control="clr-namespace:ViVo.Controls"
              x:Class="ViVo.Views.CadastrarIdosoView"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             xmlns:controls="clr-namespace:ViVo.Controls"
              Title="{Binding Title}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Entry">
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="PlaceholderColor" Value="#bababa"/>
+            <Style TargetType="controls:CustomButton">
+                <Setter Property="BackgroundColor" Value="Green"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid BackgroundColor="#456fc2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <ScrollView>
+            <Grid>
+                <Grid Margin="20,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Margin="20,0,20,0">
+                    <Entry Text="{Binding Nome}" Placeholder="Nome completo*" Grid.Row="0" />
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                <Entry Text="{Binding CpfTutor}" Grid.Row="0" Placeholder="CPF Tutor"/>
-                <Entry Text="{Binding Nome}" Grid.Row="1" Placeholder="Nome"/>
-                <Entry Text="{Binding Cpf}" Grid.Row="2" Placeholder="CPF"/>
-                <Entry Text="{Binding Endereco}" Grid.Row="3" Placeholder="Endereço"/>
-                <Entry Text="{Binding Cidade}" Grid.Row="4" Placeholder="Cidade"/>
-                <Entry Text="{Binding Estado}" Grid.Row="5" Placeholder="Estado"/>
-                <control:CustomDatePicker Grid.Row="6" TextColor="#bababa"/>
-                <Entry Text="{Binding Sangue}" Grid.Row="7" Placeholder="Tipo sanguíneo"/>
-                <Entry Text="{Binding Observacoes}" Grid.Row="8" Placeholder="Observações importantes"/>
-                <Entry Text="{Binding Password}" Grid.Row="9" Placeholder="Senha" IsPassword="True"/>
-                <Entry Text="{Binding ConfirmPassword}" Grid.Row="10" Placeholder="Confirmar senha" IsPassword="True"/>
-                <Button Text="CADASTRAR!" BackgroundColor="Green" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="11" Command="{Binding CadastrarCommand}" />
+                        <Entry Text="{Binding Cpf}" Keyboard="Numeric" Placeholder="CPF*" Grid.Column="0" >
+                            <Entry.Behaviors>
+                                <behaviorPack:CPFValidationBehavior />
+                                <behaviorPack:MaskedBehavior Mask="XXX.XXX.XXX-XX" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <controls:CustomDatePicker Date="{Binding Nascimento}" Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Picker ItemsSource="{Binding SexoLista}" SelectedItem="{Binding Sexo}" Title="Sexo*" Grid.Column="0" />
+
+                        <Entry Text="{Binding Celular}" Placeholder="Celular*" Keyboard="Numeric" Grid.Column="1" >
+                            <Entry.Behaviors>
+                                <behaviorPack:MaskedBehavior Mask="(XX)XXXXX-XXXX" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Text="{Binding Cep}" Keyboard="Numeric" Placeholder="CEP*" Grid.Column="0" >
+                            <Entry.Behaviors>
+                                <behaviorPack:CEPValidationBehavior />
+                                <behaviorPack:MaskedBehavior Mask="XXXXX-XXX" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <controls:CustomButton Text="Consultar" Command="{Binding ConsultarCepCommand}" Margin="0,10,0,0" Grid.Column="1" />
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" ItemDisplayBinding="{Binding Sigla}" Title="Estado*" IsEnabled="{Binding EnderecoHabilitado}" Grid.Column="0"/>
+                        <Picker ItemsSource="{Binding Cidades}" SelectedItem="{Binding Cidade}" ItemDisplayBinding="{Binding Nome}" Title="Cidade*" IsEnabled="{Binding EnderecoHabilitado}" Grid.Column="1" />
+                        <Entry Text="{Binding Bairro}" Placeholder="Bairro*" IsEnabled="{Binding EnderecoHabilitado}" Grid.Column="2" />
+                    </Grid>
+
+                    <Entry Text="{Binding Endereco}" Placeholder="Endereço*" IsEnabled="{Binding EnderecoHabilitado}" Grid.Row="5"/>
+
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Text="{Binding EnderecoNumero}" Placeholder="Número*" Grid.Column="0" />
+                        <Entry Text="{Binding EnderecoComplemento}" Placeholder="Complemento" Grid.Column="1" />
+                    </Grid>
+
+                    <Entry x:Name="email" Text="{Binding Email}" Placeholder="Email*" Grid.Row="7" >
+                        <Entry.Behaviors>
+                            <behaviorPack:EmailValidationBehavior />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry Text="{Binding ConfirmarEmail}" Placeholder="Confirmar email*" Grid.Row="8" >
+                        <Entry.Behaviors>
+                            <behaviorPack:EmailValidationBehavior />
+                            <behaviorPack:CompareValidationBehavior BindingContext="{x:Reference email}" Text="{Binding Text}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Entry x:Name="senha" Text="{Binding Senha}" IsPassword="True" Placeholder="Senha*" Grid.Row="9" >
+                        <Entry.Behaviors>
+                            <behaviorPack:PasswordValidationBehavior />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry Text="{Binding ConfirmarSenha}" Placeholder="Confirmar senha*" IsPassword="True" Grid.Row="10">
+                        <Entry.Behaviors>
+                            <behaviorPack:PasswordValidationBehavior />
+                            <behaviorPack:CompareValidationBehavior BindingContext="{x:Reference senha}" Text="{Binding Text}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Grid Grid.Row="11">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Picker ItemsSource="{Binding SangueLista}" SelectedItem="{Binding Sangue}" Title="Tipo sanguíneo*" Grid.Column="0"/>
+
+                        <Entry Text="{Binding CpfTutor}" Keyboard="Numeric" Placeholder="CPF do Tutor*" Grid.Column="1" >
+                            <Entry.Behaviors>
+                                <behaviorPack:CPFValidationBehavior />
+                                <behaviorPack:MaskedBehavior Mask="XXX.XXX.XXX-XX" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Grid>
+
+                    <Editor Text="{Binding Doenca}" Placeholder="Histórico de doenças" Grid.Row="12" />
+
+                    <Editor Text="{Binding Medicacao}" Placeholder="Medicações utilizadas" Grid.Row="13" />
+
+                    <Editor Text="{Binding Atividade}" Placeholder="Atividades realizadas" Grid.Row="14" />
+
+                    <Editor Text="{Binding Observacao}" Placeholder="Observações" Grid.Row="15" />
+
+                    <controls:CustomButton Text="Cadastar!" Command="{Binding CadastrarCommand}" Margin="0,0,0,20" Grid.Row="16" />
+                </Grid>
             </Grid>
-
-        </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

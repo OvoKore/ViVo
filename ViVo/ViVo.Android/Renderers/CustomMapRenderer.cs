@@ -1,61 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
+using Android.Gms.Common.Apis;
+using Android.Gms.Location;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using Plugin.Permissions.Abstractions;
 using ViVo.Controls;
 using ViVo.Droid.Renderers;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using Xamarin.Forms.Maps.Android;
+using Xamarin.Forms.GoogleMaps;
+using Xamarin.Forms.GoogleMaps.Android;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace ViVo.Droid.Renderers
 {
     public class CustomMapRenderer : MapRenderer, GoogleMap.IInfoWindowAdapter
     {
-        private CustomMap _formsMap;
-        private List<CustomPin> _customPins;
-
         public CustomMapRenderer(Context context) : base(context)
         {
         }
 
-        protected override void OnElementChanged(Xamarin.Forms.Platform.Android.ElementChangedEventArgs<Map> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Map> e)
         {
             base.OnElementChanged(e);
-
             if (e.NewElement != null)
             {
-                _formsMap = (CustomMap)e.NewElement;
-                _customPins = _formsMap.CustomPins;
-                Control.GetMapAsync(this);
             }
         }
 
-        protected override void OnMapReady(GoogleMap map)
+        protected override async void OnMapReady(GoogleMap nativeMap, Map map)
         {
-            base.OnMapReady(map);
+            map.MyLocationButtonClicked += (sender, args) =>
+            {
+                PedirGps();
+            };
 
-            NativeMap.SetInfoWindowAdapter(this);
-        }
+            var status = await Utils.PedirPermissaoLocalizacao();
+            if (status == PermissionStatus.Granted)
+            {
+                Map.MyLocationEnabled = true;
+                Map.UiSettings.MyLocationButtonEnabled = true;
 
-        protected override MarkerOptions CreateMarker(Pin pin)
-        {
-            var marker = new MarkerOptions();
-            marker.SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
-            marker.SetTitle(pin.Label);
-            marker.SetSnippet(pin.Address);
-            marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.map_pin));
-            return marker;
+                Plugin.Geolocator.Abstractions.Position posicao = await Utils.PedirLocalizacao();
+                if (posicao != null)
+                {
+                    Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(posicao.Latitude, posicao.Longitude), Distance.FromMiles(0.1)));
+                }
+                else
+                {
+                    PedirGps();
+                }
+            }
+            base.OnMapReady(nativeMap, map);
         }
 
         public Android.Views.View GetInfoContents(Marker marker)
@@ -65,25 +62,46 @@ namespace ViVo.Droid.Renderers
 
         public Android.Views.View GetInfoWindow(Marker marker)
         {
-            var customPin = GetCustomPin(marker);
-            if (customPin == null)
-                return new Android.Views.View(Context);
-
-            _formsMap.SelectPin(customPin);
             return new Android.Views.View(Context);
         }
 
-        private CustomPin GetCustomPin(Marker annotation)
+        public void PedirGps()
         {
-            var position = new Position(annotation.Position.Latitude, annotation.Position.Longitude);
-            foreach (var pin in _customPins)
+            var googleApiClient = new GoogleApiClient.Builder(Context).AddApi(LocationServices.API).Build();
+            googleApiClient.Connect();
+
+            var locationRequest = LocationRequest.Create();
+            locationRequest.SetPriority(LocationRequest.PriorityHighAccuracy);
+            locationRequest.SetInterval(10000);
+            locationRequest.SetFastestInterval(10000 / 2);
+
+            var builder = new LocationSettingsRequest.Builder().AddLocationRequest(locationRequest);
+            builder.SetAlwaysShow(true);
+
+            var result = LocationServices.SettingsApi.CheckLocationSettings(googleApiClient, builder.Build());
+            result.SetResultCallback(async (LocationSettingsResult callback) =>
             {
-                if (pin.Position == position)
+                switch (callback.Status.StatusCode)
                 {
-                    return pin;
+                    case LocationSettingsStatusCodes.Success:
+                        {
+                            await Utils.PedirPermissaoLocalizacao();
+                            break;
+                        }
+                    case LocationSettingsStatusCodes.ResolutionRequired:
+                        {
+                            try
+                            {
+                                callback.Status.StartResolutionForResult((Activity)Context, Utils.REQUEST_CHECK_SETTINGS);
+                                await Utils.PedirPermissaoLocalizacao();
+                            }
+                            catch (IntentSender.SendIntentException)
+                            {
+                            }
+                            break;
+                        }
                 }
-            }
-            return null;
+            });
         }
     }
 }

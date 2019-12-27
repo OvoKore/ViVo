@@ -2,20 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ViVo.Views.CadastroView"
+             xmlns:controls="clr-namespace:ViVo.Controls"
              Title="{Binding Title}">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="controls:CustomButton">
+                <Setter Property="BackgroundColor" Value="#b9c11b"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <Grid BackgroundColor="#456fc2">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,50,0,0" Grid.Row="0">
-                <Image Source="icon.png" VerticalOptions="Start" Margin="0,3,0,0"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,50,0,0" Grid.Row="0" >
+                <Image Source="icon.png" VerticalOptions="Start" />
             </StackLayout>
 
-            <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid Margin="20,0" Grid.Row="1" >
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -23,9 +32,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button Text="CADASTRAR TUTOR" BackgroundColor="#b9c11b" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="1" Command="{Binding TutorCommand}" />
-                <Button Text="CADASTRAR IDOSO" BackgroundColor="#b9c11b" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="2" Command="{Binding IdosoCommand}" />
-                <Button Text="CADASTRAR NETO" BackgroundColor="#b9c11b" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" Command="{Binding NetoCommand}" />
+                <controls:CustomButton Text="Cadastrar Tutor" Command="{Binding TutorCommand}" Grid.Row="0" />
+                <controls:CustomButton Text="Cadastrar Idoso" Command="{Binding IdosoCommand}" Grid.Row="1" />
+                <controls:CustomButton Text="Cadastrar Neto" Command="{Binding NetoCommand}" Grid.Row="2" />
             </Grid>
 
         </Grid>

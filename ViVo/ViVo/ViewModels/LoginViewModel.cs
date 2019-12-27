@@ -1,58 +1,79 @@
-﻿
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using ViVo;
 using ViVo.ViewModels;
 
 namespace PassaKey.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        private int role;
-        public int Role
+        protected LoginViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            get => role;
-            set => SetProperty(ref role, value);
+            RoleLista = Utils.roles;
         }
 
-        private DelegateCommand signInCommand;
-        public DelegateCommand SignInCommand => signInCommand ?? (signInCommand = new DelegateCommand(async () => await SignInCommandExecute(), () => !IsBusy));
+        #region Campos
 
-        private DelegateCommand createCommand;
-        public DelegateCommand CreateCommand => createCommand ?? (createCommand = new DelegateCommand(async () => await CreateCommandExecute(), () => !IsBusy));
-
-
-        protected LoginViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
-            : base(navigationService, pageDialogService)
+        private List<string> _roleLista;
+        public List<string> RoleLista
         {
+            get => _roleLista;
+            set => SetProperty(ref _roleLista, value);
         }
 
-        private async Task LoadSignInAsync()
+        private string _cpf;
+        public string Cpf
         {
+            get => _cpf;
+            set => SetProperty(ref _cpf, value);
+        }
+
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set => SetProperty(ref _password, value);
+        }
+
+        private string _role;
+        public string Role
+        {
+            get => _role;
+            set => SetProperty(ref _role, value);
+        }
+        #endregion
+
+        private DelegateCommand logarCommand;
+        public DelegateCommand LogarCommand => logarCommand ?? (logarCommand = new DelegateCommand(async () => await LogarCommandExecute(), () => !IsBusy));
+
+        private DelegateCommand criarCommand;
+        public DelegateCommand CriarCommand => criarCommand ?? (criarCommand = new DelegateCommand(async () => await CriarCommandExecute(), () => !IsBusy));
+
+        private async Task LogarAsync()
+        {            
             try
             {
                 IsBusy = true;
-                role = new Random().Next(3);
-                if (role == 1)
+                if (Role == "Tutor")
                 {
-                    await NavigationService.NavigateAsync("/MainIdosoView");
+                    await NavigationService.NavigateAsync("/MainTutorView");
                 }
-                else if (role == 2)
+                else if (Role == "Neto")
                 {
                     await NavigationService.NavigateAsync("/MainNetoView");
                 }
-                else if (role == 3)
+                else if (Role == "Idoso")
                 {
-                    await NavigationService.NavigateAsync("/MainTutorView");
+                    await NavigationService.NavigateAsync("/MainIdosoView");
                 }
                 else
                 {
                     await PageDialogService.DisplayAlertAsync("Alerta", "Selecione um tipo de usuário", "OK");
                 }
-                
-                
             }
             catch (Exception ex)
             {
@@ -63,13 +84,12 @@ namespace PassaKey.ViewModels
                 IsBusy = false;
             }
         }
-
-        private async Task SignInCommandExecute()
+        private async Task LogarCommandExecute()
         {
-            await LoadSignInAsync();
+            await LogarAsync();
         }
 
-        private async Task CreateInAsync()
+        private async Task CriarAsync()
         {
             try
             {
@@ -85,10 +105,9 @@ namespace PassaKey.ViewModels
                 IsBusy = false;
             }
         }
-
-        private async Task CreateCommandExecute()
+        private async Task CriarCommandExecute()
         {
-            await CreateInAsync();
+            await CriarAsync();
         }
     }
 }
