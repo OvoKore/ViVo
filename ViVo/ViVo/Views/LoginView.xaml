@@ -24,8 +24,8 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <Entry Text="{Binding Cpf}" Keyboard="Numeric" Placeholder="CPF" Grid.Row="0" >
@@ -37,7 +37,7 @@
                 <Entry Text="{Binding Password}" Placeholder="Senha" IsPassword="True" Grid.Row="1"  />
                 <Picker ItemsSource="{Binding RoleLista}" SelectedItem="{Binding Role}" Title="Selecione um usuário" Grid.Row="2" />
                 <controls:CustomButton Text="Entrar" BackgroundColor="Green" Command="{Binding LogarCommand}" Grid.Row="3" />
-                <Label Text="Não é membro? Cadastre-se!" Margin="0,150,0,0" Grid.Row="4" />
+                <Label Text="Não é membro? Cadastre-se!" Margin="0,0,0,0" Grid.Row="4" VerticalOptions="End"/>
                 <controls:CustomButton Text="Cadastrar" BackgroundColor="Red" Margin="0,0,0,20" Command="{Binding CriarCommand}" Grid.Row="5" />
             </Grid>
 
